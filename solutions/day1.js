@@ -3,7 +3,6 @@
 const fs = require('fs');
 
 const letterNumsToRealNums = {
-    "zero": 0,
     "one": 1,
     "two": 2,
     "three": 3,
@@ -36,27 +35,35 @@ fs.readFile('../input/day1', 'utf8', (err, data) => {
                     startPos = o;
                 }
             }
-            if (startPos !== -1) {
+            if (startPos > -1) {
                 let numCorrect = 1;
                 for (let o = 1; o<digit.length; o++) {
                     if (digit[o] === item[startPos+o]) {
                         numCorrect++;
                     } else {
-                        numCorrect -= Infinity;
+                        break;
                     }
                 }
-                console.log(`${digit} is correct at position ${i+1}`);
-                if (numCorrect === digit.length) {
+                if (numCorrect >= digit.length) {
                     digits[startPos] = letterNumsToRealNums[digit];
                 }
             }
         }
-        item = item.replaceAll(/[a-z]/ig,"");
         for (var s = 0; s<item.length; s++) {
-            digits[s] = item[s];
+            if (item[s].match((/[0-9]/i))) {
+                digits[s] = item[s];
+            }
         }
+        console.log(String(splitData[i]));
+        console.log(digits);
         digits = digits.join('').replaceAll("_","");
-        results.push(parseInt(digits[0]+digits[digits.length-1]));
+        if (digits.length>1) {
+            results.push(parseInt(digits[0]+digits[digits.length-1]));
+            console.log(parseInt(digits[0]+digits[digits.length-1]));
+        } else {
+            results.push(parseInt(digits[0]));
+            console.log(parseInt(digits[0]));
+        }
     }
     let sum = 0;
     for (let i = 0; i<results.length; i++) {
