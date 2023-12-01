@@ -64,8 +64,8 @@ fs.readFile('../input/day1', 'utf8', (err, data) => {
             results.push(parseInt(digits[0]+digits[digits.length-1]));
             console.log(parseInt(digits[0]+digits[digits.length-1]));
         } else {
-            results.push(parseInt(digits[0]));
-            console.log(parseInt(digits[0]));
+            results.push(parseInt(digits[0]+String(digits[0])));
+            console.log(parseInt(digits[0]+String(digits[0])));
         }
     }
     let sum = 0;
