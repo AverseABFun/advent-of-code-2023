@@ -1,0 +1,19 @@
+{
+  "name": "advent-of-code-2023",
+  "version": "1.0.0",
+  "description": "my advent of code solutions, please dont cheat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AverseABFun/advent-of-code-2023.git"
+  },
+  "author": "AverseABFun",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/AverseABFun/advent-of-code-2023/issues"
+  },
+  "homepage": "https://github.com/AverseABFun/advent-of-code-2023#readme"
+}
