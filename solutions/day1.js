@@ -29,7 +29,6 @@ fs.readFile('../input/day1', 'utf8', (err, data) => {
         }
         for (let d = 0; d<Object.keys(letterNumsToRealNums).length; d++) {
             let digit = Object.keys(letterNumsToRealNums)[d];
-            console.log("checking "+digit);
             let startPoss = [];
             for (let o = 0; o<item.length; o++) {
                 if (item[o] === digit[0]) {
@@ -48,7 +47,6 @@ fs.readFile('../input/day1', 'utf8', (err, data) => {
                         }
                     }
                     if (numCorrect >= digit.length) {
-                        console.log(`got ${digit}`);
                         digits[startPos] = letterNumsToRealNums[digit];
                     }
                 }
