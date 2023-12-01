@@ -29,23 +29,28 @@ fs.readFile('../input/day1', 'utf8', (err, data) => {
         }
         for (let d = 0; d<Object.keys(letterNumsToRealNums).length; d++) {
             let digit = Object.keys(letterNumsToRealNums)[d];
-            let startPos = -1;
+            console.log("checking "+digit);
+            let startPoss = [];
             for (let o = 0; o<item.length; o++) {
                 if (item[o] === digit[0]) {
-                    startPos = o;
+                    startPoss.push(o);
                 }
             }
-            if (startPos > -1) {
-                let numCorrect = 1;
-                for (let o = 1; o<digit.length; o++) {
-                    if (digit[o] === item[startPos+o]) {
-                        numCorrect++;
-                    } else {
-                        break;
+            for (let pos = 0; pos < startPoss.length; pos++) {
+                let startPos = startPoss[pos];
+                if (startPos > -1) {
+                    let numCorrect = 1;
+                    for (let o = 1; o<digit.length; o++) {
+                        if (digit[o] === item[startPos+o]) {
+                            numCorrect++;
+                        } else {
+                            break;
+                        }
                     }
-                }
-                if (numCorrect >= digit.length) {
-                    digits[startPos] = letterNumsToRealNums[digit];
+                    if (numCorrect >= digit.length) {
+                        console.log(`got ${digit}`);
+                        digits[startPos] = letterNumsToRealNums[digit];
+                    }
                 }
             }
         }
