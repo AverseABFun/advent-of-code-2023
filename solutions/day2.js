@@ -244,7 +244,7 @@ function sum(arr) {
     return s;
 }
 
-fs.readFile('../input/day2testcases', 'utf8', (err, data) => {
+fs.readFile('../input/day2', 'utf8', (err, data) => {
     if (err) {
         console.error(err);
         return;
@@ -278,9 +278,9 @@ fs.readFile('../input/day2testcases', 'utf8', (err, data) => {
         itemData.possible = itemData.map((value)=>value.possible).every(x => x);
         itemData.id = id;
         itemData.minimum = {
-            red: Math.max(itemData.map((val)=>val.map((val2)=>val2.kind === 'red' ? val2.num : 0)).map((val)=>Math.max(val))),
-            blue: Math.max(itemData.map((val)=>val.map((val2)=>val2.kind === 'blue' ? val2.num : 0)).map((val)=>Math.max(val))),
-            green: Math.max(itemData.map((val)=>val.map((val2)=>val2.kind === 'green' ? val2.num : 0)).map((val)=>Math.max(val))),
+            red: Math.max(...itemData.map((val)=>val.map((val2)=>val2.kind === 'red' ? val2.num : 0)).map((val)=>Math.max(...val))),
+            blue: Math.max(...itemData.map((val)=>val.map((val2)=>val2.kind === 'blue' ? val2.num : 0)).map((val)=>Math.max(...val))),
+            green: Math.max(...itemData.map((val)=>val.map((val2)=>val2.kind === 'green' ? val2.num : 0)).map((val)=>Math.max(...val))),
         };
         console.log(itemData.minimum)
         itemData.power = itemData.minimum.red * itemData.minimum.green * itemData.minimum.blue;
